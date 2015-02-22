@@ -1,7 +1,5 @@
 import os
 import sys
-import re
-from urllib import urlencode
 
 """
 This script gets the stock symbol from the .csv files downloaded from industy
@@ -33,8 +31,9 @@ def main(argv):
         line = rfile.readline();
         while line != '':
             procLine = line.split(',')
-            if (procLine[0] == 'Symbol'):
-                line = rfile.readline
+            if (procLine[0] == '"Symbol"'):
+                #print('Symbol found')
+                line = rfile.readline()
             else:
                 symbol = removeQuote(procLine[0])
                 symbol = urlEncode(symbol)
